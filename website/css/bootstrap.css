@@ -31,12 +31,28 @@ body {
     padding-left: 15px;
 }
 
+.footer img {
+    margin: 0 auto;
+    display: block;
+}
+
+.footer p {
+    margin-top: 1em;
+    text-align: center;
+}
+
 
 /* Custom page header */
 
 .header {
     padding-bottom: 20px;
     border-bottom: 1px solid #e5e5e5;
+}
+
+.header img {
+    width: 70%;
+    height: auto;
+    margin-left: 15%;
 }
 
 
@@ -4884,15 +4900,21 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
     margin-left: -1px;
 }
 
+nav {
+    text-align: center;
+}
+
 .nav {
     padding-left: 0;
-    margin-bottom: 0;
     list-style: none;
+    margin: 1em auto;
+    display: inline-block;
 }
 
 .nav>li {
     position: relative;
     display: block;
+    margin: auto;
 }
 
 .nav>li>a {
@@ -5021,6 +5043,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 
 .nav-pills>li {
     float: left;
+    display: inline-block;
 }
 
 .nav-pills>li>a {
