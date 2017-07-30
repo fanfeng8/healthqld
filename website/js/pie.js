@@ -26,7 +26,7 @@ var pie = d3.pie()
 
 
 // define the svg donut chart
-var svg2 = d3.select("body").append("svg")
+var svg2 = d3.select("#mainmap").append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
