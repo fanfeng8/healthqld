@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <!--    <link rel="icon" href="../../favicon.ico">-->
 
     <title>HospitalOMeter</title>
 
@@ -30,6 +30,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,14 +44,32 @@
         </div>
         <nav>
             <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#">Hopitals</a></li>
+                <li role="presentation" class="active"><a href="#">Hospitals</a></li>
                 <li role="presentation"><a href="#">Clinics</a></li>
             </ul>
         </nav>
 
         <div class="jumbotron">
-            <h1>Map Here!</h1>
-            <p class="lead"></p>
+
+            <!--            <p class="lead"></p>-->
+            <div id="tools">
+                <div class="btn-group pull-left" role="group" aria-label="..." id="back-to-qld">
+                    <button type="button" class="btn btn-default">Back</button>
+                </div>
+                <!-- Single button -->
+                <div class="btn-group pull-right" id="suburb-selection">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select City <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Ipswich</a></li>
+                        <li><a href="#">Gold Coast</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">All QLD cities</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main-map">
+                <!--                <h1>Map Here!</h1>-->
+            </div>
 
             <!--            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>-->
         </div>
@@ -76,14 +96,77 @@
             <img src="govhack.png" alt="govhacklogo" style="height:2em" align="middle">
             <p>&copy; 2017 GovHack project - Team Health Queensland</p>
         </footer>
-
+        <div class="hidden-content">
+            <div id="tooltip" class="hidden1 qld">
+                <p><span id="label"></span></p>
+                <p>QLD</p>
+            </div>
+            <div id="tooltip" class="hidden2 ipswich">
+                <p><span id="label"></span></p>
+                <p>Ips</p>
+            </div>
+            <div id="tooltip" class="hidden3 gold-coast">
+                <p><span id="label"></span></p>
+                <p>GC</p>
+            </div>
+        </div>
     </div>
     <!-- /container -->
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script type="text/javascript" src="js/geoMap-gc.js"></script>
+    <script type="text/javascript" src="js/geoMap-ipswich.js"></script>
+    <script type="text/javascript" src="js/geoMap-qld.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentSuburb = "qld";
+            $(".hidden-content").hide();
+            $("#back-to-qld").hide();
+
+            $("#main-map").html($(".qld"));
+            $("#suburb-selection li").eq(0).click(function() {
+                if (currentSuburb != "ipswich") {
+                    currentSuburb = "ipswich";
+                    $("#main-map").html($(".ipswich").clone());
+                    $("#back-to-qld").show();
+                }
+            });
+            $("#suburb-selection li").eq(1).click(function() {
+                if (currentSuburb != "gold coast") {
+                    currentSuburb = "gold coast";
+                    $("#main-map").html($(".gold-coast").clone());
+                    $("#back-to-qld").show();
+                }
+            });
+            $("#suburb-selection li").eq(3).click(function() {
+                if (currentSuburb != "qld") {
+                    currentSuburb = "qld";
+                    $("#main-map").html($(".qld").clone());
+                    $("#back-to-qld").hide();
+                }
+            });
+            $("#back-to-qld").click(function() {
+                if (currentSuburb != "qld") {
+                    currentSuburb = "qld";
+                    $("#main-map").html($(".qld").clone());
+                    $("#back-to-qld").hide();
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>

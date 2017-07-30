@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="js/d3.layout.cloud.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Impact" rel="stylesheet">
+<head>
+    <title>Word Cloud Example</title>
+</head>
+<body>
+	<div id="word-cloud"> </div>
+</body>
+<script>
+    var frequency_list = 
+		["Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha","Denson", "Qi", "Holly", "Alvin", "Web", "Information", "System", "7", "WordCloud", "Hahahahahahaha"];
+	var width = 750, height = 500;
+    var fill = d3.scale.category20();
+	
+	d3.layout.cloud().size([width, height])
+            .words(frequency_list.map(function(d) {
+				return {text: d, size: 10 + Math.random() * 90};
+			}))
+			.padding(5)
+			.rotate(function() { return ~~(Math.random() * 2) * 45; })
+            .fontSize(function(d) { return d.size; })
+			.font("Impact")
+            .on("end", draw)
+            .start();
+    function draw(words) {
+        d3.select("#word-cloud").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "wordcloud")
+                .append("g")
+                // without the transform, words words would get cutoff to the left and top, they would
+                // appear outside of the SVG area
+                .attr("transform", "translate(" + ( width / 2 ) + "," + ( height / 2 ) + ")")
+                .selectAll("text")
+                .data(words)
+                .enter().append("text")
+				.style("font-family", "Impact")
+                .style("font-size", function(d) { return d.size + "px"; })
+                .style("fill", function(d, i) { return fill(i); })
+                .attr("text-anchor","middle")
+				.attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .text(function(d) { return d.text; });
+    }
+</script>
+
+
+
+</html>
