@@ -21,11 +21,11 @@ var color = d3.scale.quantize()
             "rgb(0,90,50)"]);
 
 
-var tooltip = d3.select(".hidden-content").append("div")
+var tooltip = d3.select("#main-map").append("div")
     .attr("class", "tooltip")
 
 
-var svg = d3.select(".hidden-content").append("svg")
+var svg = d3.select("#main-map").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
