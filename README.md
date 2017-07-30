@@ -5,7 +5,7 @@ Our project will help patients and the Brisbane city council to understand custo
 
 
 ### How to run the demo
-* Old version  (www.healthmeter.tech):
+* Old version  (www.healthometer.tech):
 * New version  (www.uqimage.com):
  
  
