@@ -1,8 +1,9 @@
+function drawmap(div_id,tooltip_id){
 var margin = {
         top: 5,
         right: 5,
         bottom: 5,
-        left: 5
+        left: 100
     },
     width = 550 - margin.left - margin.right,
     height = 550 - margin.top - margin.bottom;
@@ -16,15 +17,15 @@ var projection = d3.geoAzimuthalEquidistant().translate([0, 0]).scale(scale).rot
 var path = d3.geo.path().projection(projection);
 
 var color = d3.scale.quantize()
-    .range(["rgb(161,217,155)", "rgb(116,196,118)",
-            "rgb(65,171,93)", "rgb(35,139,69)",
-            "rgb(0,90,50)"]);
+    .range(["rgb(168,29,77)", "rgb(238,95,155)",
+            "rgb(241,141,181)", "rgb(148,222,226)",
+            "rgb(68,146,147)"]);
 
-
-var tooltip = d3.select("#main-map").append("div")
+d3.select(tooltip_id).selectAll("*").remove();
+var tooltip = d3.select(tooltip_id).append("div")
     .attr("class", "tooltip")
 
-
+d3.select(div_id).selectAll("*").remove();
 var svg = d3.select("#main-map").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -1048,3 +1049,4 @@ d3.csv("data/qld/Queesland_color.csv", function (data) {
 
 
 });
+}

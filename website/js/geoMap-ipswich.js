@@ -1,8 +1,9 @@
+function DrawIpswich(div_id,tooltip_id){
 var margin = {
         top: 5,
         right: 5,
         bottom: 5,
-        left: 5
+        left: 100
     },
     width = 550 - margin.left - margin.right,
     height = 550 - margin.top - margin.bottom;
@@ -16,16 +17,17 @@ var projection = d3.geoAzimuthalEquidistant().translate([0, 0]).scale(scale).rot
 var path = d3.geo.path().projection(projection);
 
 var color = d3.scale.quantize()
-    .range(["rgb(161,217,155)", "rgb(116,196,118)",
-            "rgb(65,171,93)", "rgb(35,139,69)",
-            "rgb(0,90,50)"]);
+    .range(["rgb(168,29,77)", "rgb(238,95,155)",
+            "rgb(241,141,181)", "rgb(148,222,226)",
+            "rgb(68,146,147)"]);
 
 
-var tooltip = d3.select("#main-map").append("div")
+var tooltip = d3.select(tooltip_id).append("div")
     .attr("class", "tooltip")
 
 
-var svg = d3.select("#main-map").append("svg")
+d3.select(div_id).selectAll("*").remove();
+var svg = d3.select(div_id).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -134,9 +136,9 @@ d3.csv("data/ipswich/Queesland_color.csv", function (data) {
             })
 
         var Smiles = [{
-            "name": 1,
-            "lat": -27.959318,
-            "long": 153.286366
+            "name": "...",
+            "lat": -27.620925, 
+            "long": 152.431307
         }]
 
         svg.selectAll(".smile")
@@ -169,9 +171,9 @@ d3.csv("data/ipswich/Queesland_color.csv", function (data) {
 
         //Angry
         var Angry = [{
-            "name": 1,
-            "lat": -27.897760,
-            "long": 152.153408
+            "name": "<blockquote class=’twitter-tweet’ data-lang=’en’><p lang=’en’ dir=’ltr’>We have been in the hospital since 4pm yesterday and it&#39;s a long and painful process but… < a href=’’>https://t.co/tgTHByWq63</a></p>&mdash; Nathan Walker (@saturday_13) < a href=’https://twitter.com/saturday_13/status/882556599910359042’>July 5, 2017</ a></blockquote> <script async src=’//platform.twitter.com/widgets.js’ charset=’utf-8’></script>",
+            "lat":-27.619267 , 
+            "long":152.758842
         }]
         svg.selectAll(".angry")
             .data(Angry)
@@ -202,3 +204,4 @@ d3.csv("data/ipswich/Queesland_color.csv", function (data) {
 
 
 });
+}

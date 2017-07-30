@@ -1,8 +1,9 @@
+function DrawGoldcoast(div_id,tooltip_id){
 var margin = {
         top: 5,
         right: 5,
         bottom: 5,
-        left: 5
+        left: 100
     },
     width = 550 - margin.left - margin.right,
     height = 550 - margin.top - margin.bottom;
@@ -16,16 +17,16 @@ var projection = d3.geoAzimuthalEquidistant().translate([0, 0]).scale(scale).rot
 var path = d3.geo.path().projection(projection);
 
 var color = d3.scale.quantize()
-    .range(["rgb(161,217,155)", "rgb(116,196,118)",
-            "rgb(65,171,93)", "rgb(35,139,69)",
-            "rgb(0,90,50)"]);
+    .range(["rgb(168,29,77)", "rgb(238,95,155)",
+            "rgb(241,141,181)", "rgb(148,222,226)",
+            "rgb(68,146,147)"]);
 
-
-var tooltip = d3.select("#main-map").append("div")
+d3.select(tooltip_id).selectAll("*").remove();
+var tooltip = d3.select(tooltip_id).append("div")
     .attr("class", "tooltip")
 
-
-var svg = d3.select("#main-map").append("svg")
+d3.select(div_id).selectAll("*").remove();
+var svg = d3.select(div_id).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -126,14 +127,19 @@ d3.csv("data/gc/Queesland_color.csv", function (data) {
 
         //Smile
         var Smiles = [{
-                "name": 1,
-                "lat": -27.959318,
-                "long": 153.286366
+                "name": "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Hospital dinner. Pretty tasty actually. @ Pindara Private Hospital <a href='https://t.co/ART4FLz9QT'>https://t.co/ART4FLz9QT</a></p>&mdash; Jennifer Doherty (@Ilaeria) <a href='https://twitter.com/Ilaeria/status/719785433291358208'>April 12, 2016</a></blockquote><script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>",
+				"lat": -28.00895,
+                "long": 153.39456
             },
             {
-                "name": 1,
-                "lat": -28.035407,
-                "long": 153.323101
+                "name": "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Escaped from hospital last night to spend time with my fav people igersgoldcoast and have a good?<a href='https://t.co/MZD6gQVkVC'>https://t.co/MZD6gQVkVC</a></p>&mdash; Katiemuz (@katielou2050) <a href='https://twitter.com/katielou2050/status/724010021823078400'>April 23, 2016</a></blockquote><script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>",
+                "lat": -28.07241988,
+                "long": 153.4269536
+            },
+			{
+                "name": "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Leaving the hospital (@ Redlands Hospital in Cleveland, QLD) <a href='https://t.co/FY1nDlJLxU'>https://t.co/FY1nDlJLxU</a></p>&mdash; vanessa_pr (@vanessa_pr) <a href='https://twitter.com/vanessa_pr/status/707917948078432256'>March 10, 2016</a></blockquote><script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>",
+                "lat": -27.54050185,
+                "long": 153.2514801
             }]
 
         svg.selectAll(".smile")
@@ -166,14 +172,9 @@ d3.csv("data/gc/Queesland_color.csv", function (data) {
 
         //Angry
         var Angry = [{
-                "name": 1,
-                "lat": -27.977512,
-                "long": 153.427471
-            },
-            {
-                "name": 1,
-                "lat": -28.063889,
-                "long": 153.366360
+                "name": "<blockquote class='twitter-tweet' data-lang='en'><p lang='en' dir='ltr'>Too often we get this in the clinic. Chronic movement dysfunction are habits.<br><br>I&#39;m sorry but?<a href='https://t.co/mtrbln1nZB'>https://t.co/mtrbln1nZB</a></p>&mdash; Jono Freeman (@jono_freeman) <a href='https://twitter.com/jono_freeman/status/707301620804149250'>March 8, 2016</a></blockquote><script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>",
+                "lat": -28.014927,
+                "long": 153.359300
             }]
         svg.selectAll(".angry")
             .data(Angry)
@@ -204,3 +205,4 @@ d3.csv("data/gc/Queesland_color.csv", function (data) {
 
 
 });
+}

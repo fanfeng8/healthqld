@@ -1,4 +1,5 @@
 // margin
+function draw_pie(){
 var margin = {top: 20, right: 20, bottom: 20, left: 20},
     width = 500 - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom,
@@ -77,4 +78,5 @@ function tweenDonut(b) {
   b.innerRadius = 0;
   var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
   return function(t) { return arc2(i(t)); };
+}
 }

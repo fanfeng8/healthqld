@@ -16,23 +16,23 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template
     <link href="jumbotron-narrow.css" rel="stylesheet">
-
+ -->
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
     <script src="js/ie-emulation-modes-warning.js"></script>
-
+-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/pie.css">
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/aha.css">
-    <link rel="stylesheet" type="text/css" href="css/pie.css">
+    
 
 </head>
 
@@ -46,23 +46,30 @@
         </div>
         <nav>
             <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="index.html">QLD</a></li>
-                <li role="presentation"><a href="ipswich.html">Ipswich</a></li>
-                <li role="presentation"><a href="goldcoast.html">Gold Coast</a></li>
+                <li role="presentation" class="active" ><a href="index.html">QLD</a></li>
+                <li role="presentation"><a href="#"  onclick="DrawIpswich('#main-map','#main-bar_tool');">Ipswich</a></li>
+                <li role="presentation"><a href="#" onclick="DrawGoldcoast('#main-map','#main-bar_tool');">Gold Coast</a></li>
             </ul>
         </nav>
-
+		
         <div class="jumbotron">
 
             <!--            <p class="lead"></p>-->
-
+            <h2>Hospital and Clinic location (& ppl's feeling provide by Twitter)</h2>
             <div id="main-map">
                 <!--                <h1>Map Here!</h1>-->
+			
             </div>
 
             <!--            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>-->
         </div>
-
+		<h2>Top 10 "hot" area based on postcode in Queensland</h2>
+            <div id="main-bar">
+                <!--                <h1>Map Here!</h1>-->
+            </div>
+            <div id="main-bar_tool">
+                <!--                <h1>Map Here!</h1>-->
+            </div>
 
         <footer class="footer">
             <img src="govhack.png" alt="govhacklogo" style="height:2em" align="middle">
@@ -74,7 +81,6 @@
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -90,47 +96,19 @@
 <script type="text/javascript" src="js/geoMap-ipswich.js"></script>
 -->
     <script type="text/javascript" src="js/geoMap-qld.js"></script>
+    <script type="text/javascript" src="js/geoMap-ipswich.js"></script>    
+        <script type="text/javascript" src="js/geoMap-gc.js"></script>
     <script src="js/bar_chart.js"></script>
     <script type="text/javascript" src="js/pie.js"></script>
-    <!--
+
 <script>
     $(document).ready(function() {
-        var currentSuburb = "qld";
-        $(".hidden-content").hide();
-        $("#back-to-qld").hide();
-
-        $("#main-map").html($(".qld"));
-        $("#suburb-selection li").eq(0).click(function() {
-            if (currentSuburb != "ipswich") {
-                currentSuburb = "ipswich";
-                $("#main-map").html($(".ipswich").clone());
-                $("#back-to-qld").show();
-            }
-        });
-        $("#suburb-selection li").eq(1).click(function() {
-            if (currentSuburb != "gold coast") {
-                currentSuburb = "gold coast";
-                $("#main-map").html($(".gold-coast").clone());
-                $("#back-to-qld").show();
-            }
-        });
-        $("#suburb-selection li").eq(3).click(function() {
-            if (currentSuburb != "qld") {
-                currentSuburb = "qld";
-                $("#main-map").html($(".qld").clone());
-                $("#back-to-qld").hide();
-            }
-        });
-        $("#back-to-qld").click(function() {
-            if (currentSuburb != "qld") {
-                currentSuburb = "qld";
-                $("#main-map").html($(".qld").clone());
-                $("#back-to-qld").hide();
-            }
-        });
+        drawmap("#main-map");
+        drawbar("#main-bar","#main-bar_tool");
+        
     });
 </script>
--->
+
 </body>
 
 </html>
