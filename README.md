@@ -15,12 +15,12 @@ Our project will help patients or health researchers to understand the social op
 * New version  (www.uqimage.com):
 
 ==================================================
-## Data Sets
+## Data Sets in github
 =====================================================
-* Tweets data (geo information, opinion tag) for hospital information  (https://github.com/fanfeng8/healthqld/blob/master/website/data/tweet_post.json)
+* Tweets data (geo information, social opinion, tweet ID, postcode ) for hospital information  (https://github.com/fanfeng8/healthqld/blob/master/website/data/tweet_post.json)
 * Queensland hospital latitude or longitude  (https://github.com/fanfeng8/healthqld/tree/master/website/data/qld)
-* Goldcoast hospital latitude or longitude (https://github.com/fanfeng8/healthqld/tree/master/website/data/gc)
-* Ipswich hospital latitude or longitude  (https://github.com/fanfeng8/healthqld/tree/master/website/data/ipswich)
+* Goldcoast hospital (and Immunisation clinics) latitude or longitude (https://github.com/fanfeng8/healthqld/tree/master/website/data/gc)
+* Ipswich hospital (and Immunisation clinics) latitude or longitude  (https://github.com/fanfeng8/healthqld/tree/master/website/data/ipswich)
 
 
 ### Authors
